@@ -5,6 +5,9 @@ import { join } from "path";
 import Command from "./commands/command";
 import Utils from "./misc/utils";
 
+// ! FIXED: ./node_modules/eris-sharder/src/sharding/cluster.js:261
+// ! "Your code has not been loaded! This is due to it not extending the Base class. Please extend the Base class!"
+// ! Added line: if (app.default !== undefined) app = app.default;
 export default class Bot extends Base {
 	// Stores all the commands so we can later retrieve them
 	public cmds: Command[] = [];
