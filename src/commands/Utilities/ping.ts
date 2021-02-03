@@ -3,6 +3,7 @@ import Command from "../command";
 import { MessageArgs } from "../../misc/args";
 import { stripIndents } from "common-tags";
 
+// * Ping command for checking the latency of the API
 module.exports = new Command(
 	{
 		name: "ping",

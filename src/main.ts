@@ -8,6 +8,7 @@ import Utils from "./misc/utils";
 // ! FIXED: ./node_modules/eris-sharder/src/sharding/cluster.js:261
 // ! "Your code has not been loaded! This is due to it not extending the Base class. Please extend the Base class!"
 // ! Added line: if (app.default !== undefined) app = app.default;
+// * Main bot class
 export default class Bot extends Base {
 	// Stores all the commands so we can later retrieve them
 	public cmds: Command[] = [];
@@ -28,6 +29,8 @@ export default class Bot extends Base {
 		this.loadEvents();
 		this.loadCommands();
 		this.RefreshStatus();
+
+		console.log("Bot is online!");
 	}
 
 	// Updates the bot status with editStatus()

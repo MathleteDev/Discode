@@ -3,6 +3,7 @@ import Command from "../commands/command";
 import { config } from "dotenv";
 config();
 
+// * Fired when a message is created in any channel
 exports.handler = async function (
 	message: Message<TextChannel>
 ): Promise<void> {

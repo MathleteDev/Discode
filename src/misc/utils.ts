@@ -6,6 +6,7 @@ import {
 } from "eris";
 import Bot from "../main";
 
+// * Commonly used utilities
 export default class Utils {
 	// So we can use all bot utils
 	private bot: Bot;

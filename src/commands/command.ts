@@ -1,6 +1,7 @@
 import { Permission, EmbedOptions, AdvancedMessageContent } from "eris";
 import { CommandArgs, MessageArgs, Argument } from "../misc/args";
 
+// * Base for all commands to extend off of
 export default class Command {
 	public props: CommandArgs;
 	public execCommand: (

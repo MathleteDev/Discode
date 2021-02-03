@@ -3,7 +3,7 @@ import { config } from "dotenv";
 // Use dotenv.config() to get process.env
 config();
 
-// Creating the main bot
+// * Creating the main bot
 const _ = new Sharder(process.env.BOT_TOKEN!, "/dist/main.js", {
 	stats: true,
 	name: "Discode",
