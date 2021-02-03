@@ -4,6 +4,7 @@ import { readdirSync } from "fs";
 import { join } from "path";
 import Command from "./commands/command";
 import Utils from "./misc/utils";
+import ReactionHandler from "./misc/reactionHandler";
 
 // ! FIXED: ./node_modules/eris-sharder/src/sharding/cluster.js:261
 // ! "Your code has not been loaded! This is due to it not extending the Base class. Please extend the Base class!"
@@ -19,6 +20,8 @@ export default class Bot extends Base {
 	};
 	// Often used utilities
 	public utils: Utils = new Utils(this);
+	// Reaction handler to collect reactions
+	public reactionHandler: ReactionHandler = new ReactionHandler();
 
 	public constructor(client: { bot: Client; clusterID: number }) {
 		super(client);
