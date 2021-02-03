@@ -8,21 +8,18 @@ import Bot from "../main";
 
 // * Commonly used utilities
 export default class Utils {
-	// So we can use all bot utils
 	private bot: Bot;
 
 	public constructor(bot: Bot) {
 		this.bot = bot;
 	}
 
-	// Capitalizes a string by splitting it
 	public capitalize = (str: string): string =>
 		str
 			.split(" ")
 			.map((word: string) => word[0].toUpperCase() + word.slice(1))
 			.join(" ");
 
-	// Same as capitalize(), but also converts remaining chars to lowercase
 	public strictCapitalize = (str: string): string =>
 		str
 			.split(" ")
@@ -31,11 +28,9 @@ export default class Utils {
 			)
 			.join(" ");
 
-	// Splits the string by capital (A-Z) letters
 	public parseCamelCase = (str: string): string =>
 		(str[0].toUpperCase() + str.slice(1)).split(/(?=[A-Z])/).join(" ");
 
-	// Converts a list to a human-readable format
 	public joinParts(arr: string[]): string {
 		const last: string = arr.pop()!;
 		if (!arr.length) return last;
@@ -43,11 +38,9 @@ export default class Utils {
 		return `${arr.join(", ")}, and ${last}`;
 	}
 
-	// Selects a random element from an array
 	public pickRandom = <T>(arr: T[]): T =>
 		arr[Math.floor(Math.random() * arr.length)];
 
-	// Shuffles an array by replacing items
 	public shuffle<T>(arr: T[]): T[] {
 		let tmpArr: T[] = arr;
 
@@ -59,7 +52,6 @@ export default class Utils {
 		return tmpArr;
 	}
 
-	// Returns a footer based off the author of a message (includes avatar and username)
 	public getFooter(user: User, text: string = ""): EmbedFooterOptions {
 		return {
 			text: `${user.username}${text === "" ? "" : ` | ${text}`}`,
@@ -67,7 +59,6 @@ export default class Utils {
 		};
 	}
 
-	// Used to report errors
 	public error(description: string, message: Message): AdvancedMessageContent {
 		return {
 			embed: {
@@ -79,7 +70,6 @@ export default class Utils {
 		};
 	}
 
-	// Get a suitable embed color for a specific category
 	public getEmbedColor(category: string): string {
 		switch (category) {
 			default:

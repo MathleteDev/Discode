@@ -11,23 +11,18 @@ import ReactionHandler from "./misc/reactionHandler";
 // ! Added line: if (app.default !== undefined) app = app.default;
 // * Main bot class
 export default class Bot extends Base {
-	// Stores all the commands so we can later retrieve them
 	public cmds: Command[] = [];
-	// Embed colors for reference
 	public colors: Record<string, number> = {
 		blue: 0x0066ff,
 		red: 0xff0000
 	};
-	// Often used utilities
 	public utils: Utils = new Utils(this);
-	// Reaction handler to collect reactions
 	public reactionHandler: ReactionHandler = new ReactionHandler();
 
 	public constructor(client: { bot: Client; clusterID: number }) {
 		super(client);
 	}
 
-	// Called when bot goes online!
 	public launch(): void {
 		this.loadEvents();
 		this.loadCommands();
@@ -36,7 +31,6 @@ export default class Bot extends Base {
 		console.log("Bot is online!");
 	}
 
-	// Updates the bot status with editStatus()
 	public RefreshStatus(): void {
 		this.bot.editStatus("dnd", {
 			name: `;help !`,
@@ -44,7 +38,6 @@ export default class Bot extends Base {
 		});
 	}
 
-	// Uses FS to load all the events from the events folder
 	private loadEvents(): void {
 		readdirSync(join(__dirname, "events")).forEach((file: string) => {
 			const pull: any = require(`./events/${file}`);
@@ -53,10 +46,8 @@ export default class Bot extends Base {
 		});
 	}
 
-	// Same as loadEvents(), loads all commands from the commands folder
 	private loadCommands(): void {
 		readdirSync(join(__dirname, "commands"))
-			// Exclude the command base file and other utils
 			.filter((folder: string) => !folder.endsWith(".js"))
 			.forEach((folder: string) => {
 				readdirSync(join(__dirname, "commands", folder))

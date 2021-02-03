@@ -17,11 +17,10 @@ module.exports = new Command(
 	},
 
 	async ({ bot, message }: MessageArgs): Promise<void> => {
-		// Create this message so we can later compare
 		let ping: Message<TextChannel> = await message.channel.createMessage(
 			"🏓 Ping?"
 		);
-		// Send a message back with all the latency info
+
 		ping.edit({
 			embed: {
 				title: "🏓 Pong!",

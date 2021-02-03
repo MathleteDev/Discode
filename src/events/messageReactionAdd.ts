@@ -6,7 +6,6 @@ exports.handler = async function (
 	emoji: Emoji,
 	user: string
 ): Promise<void> {
-	// Logs it to the bot's reaction handler
 	if (!message.guildID) return;
 	this.reactionHandler.collect(message, user, emoji);
 };

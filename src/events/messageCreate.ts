@@ -7,19 +7,15 @@ config();
 exports.handler = async function (
 	message: Message<TextChannel>
 ): Promise<void> {
-	// If the message is coming from a bot or isn't from a server then return
 	if (message.author.bot || !message.guildID) return;
 
-	// Gets the command arguments with split(" ")
 	let args: string[] = message.content
 		.slice(process.env.BOT_PREFIX!.length)
 		.toLowerCase()
 		.split(" ")
 		.map((item: string) => item.trim());
 
-	// The first element will be the command name
 	const commandName: string = args.shift()!;
-	// Finds the command from bot.cmds
 	const command: Command = this.cmds.find(
 		(cmd: Command) =>
 			cmd.props.name === commandName ||
@@ -42,7 +38,6 @@ exports.handler = async function (
 			embed: res.embed ? res.embed : res
 		};
 
-		// To make things simpler, automatically assign colors and footers
 		if (!res.embed.color) {
 			res.embed.color = this.embedColors[
 				this.utils.getEmbedColor(command.props.category)

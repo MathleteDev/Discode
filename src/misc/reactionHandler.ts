@@ -12,7 +12,6 @@ interface Options {
 export default class ReactionHandler {
 	private listeners: Record<string, ReactionCollector> = {};
 
-	// Creates a new ReactionCollector
 	public awaitReactions(
 		message: Message<TextChannel>,
 		filter: Filter,
@@ -27,7 +26,6 @@ export default class ReactionHandler {
 		return collector;
 	}
 
-	// Linked to messageReactionAdd
 	public collect(
 		message: Message<TextChannel>,
 		userID: string,
@@ -38,7 +36,6 @@ export default class ReactionHandler {
 	}
 }
 
-// * Used to store reactions and emit when reaction is added
 export class ReactionCollector extends EventEmitter {
 	private filter: Filter;
 	private ended: boolean = false;
@@ -48,14 +45,12 @@ export class ReactionCollector extends EventEmitter {
 		super();
 
 		this.filter = filter;
-		// To know when to stop
 		this.time = setTimeout((): void => this.stop("time"), options.time);
 	}
 
 	public collect(userID: string, emoji: Emoji): void {
 		if (!this.filter(userID, emoji) || this.ended) return;
 
-		// Called when reaction is added
 		this.emit("collect", userID, emoji);
 	}
 
@@ -63,10 +58,8 @@ export class ReactionCollector extends EventEmitter {
 		if (this.ended) return;
 		this.ended = true;
 
-		// Clear the time so we don't continue timing
 		clearTimeout(this.time);
 
-		// Reset and end
 		this.emit("end", reason);
 		this.removeAllListeners();
 	}

@@ -1,6 +1,5 @@
 import { Master as Sharder } from "eris-sharder";
 import { config } from "dotenv";
-// Use dotenv.config() to get process.env
 config();
 
 // * Creating the main bot
